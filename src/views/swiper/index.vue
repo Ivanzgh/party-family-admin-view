@@ -1,14 +1,14 @@
 <template>
-  <div class="news">
+  <div class="swiper">
     <el-card class="m20">
-
       <el-table
-        :data="newsData"
+        :data="swiperData"
         style="width: 100%">
         <el-table-column
-          label="头图">
+          prop="imgUrl"
+          label="轮播图">
           <template slot-scope="scope">
-            <img :src="scope.row.header" alt="" class="table-item-img">
+            <img :src="scope.row.imgUrl" alt="" class="table-item-img">
           </template>
         </el-table-column>
         <el-table-column
@@ -16,22 +16,29 @@
           label="标题">
         </el-table-column>
         <el-table-column
-          prop="author.nickname"
-          label="作者">
+          prop="status"
+          label="是否显示">
+          <div slot-scope="scope">
+            {{scope.row.status ? '显示 ' : '不显示'}}
+          </div>
         </el-table-column>
         <el-table-column
-          prop="type.title"
-          label="分类">
+          prop="newsID.title"
+          label="新闻标题">
+        </el-table-column>
+        <el-table-column
+          prop="priority"
+          label="优先级">
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="newsEdit(scope.row._id)">编辑</el-button>
+              @click="swiperEdit(scope.row._id)">编辑</el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="newsDelete(scope.row._id)">删除</el-button>
+              @click="swiperDelete(scope.row._id)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -50,33 +57,33 @@
   export default {
     data() {
       return {
-        newsData: [],
+        swiperData: [],
         page : 1
       }
     },
     methods: {
-      getNewsData() {
-        this.$axios.get('/news',{page: this.page,page_size : 10}).then(res => {
+      getSwiperData() {
+        this.$axios.get('/swiper',{page: this.page,page_size : 10}).then(res => {
           if (res.code === 200) {
-            this.newsData = res.data
+            this.swiperData = res.data
           }
         })
       },
-      newsEdit() {
-
+      swiperEdit(id) {
+        this.$router.push({name : 'editSwiper',query : {id}})
       },
-      newsDelete(id) {
+      swiperDelete(id) {
         this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.$axios.post('/news/delete',{_id : id }).then(res => {
+          this.$axios.post('/swiper/delete',{_id : id}).then(res => {
             this.$message({
               type: 'success',
               message: '删除成功!'
             });
-            this.getNewsData()
+            this.getSwiperData()
           })
         }).catch(() => {
           this.$message({
@@ -91,7 +98,7 @@
       }
     },
     created() {
-      this.getNewsData()
+      this.getSwiperData()
     }
   }
 </script>

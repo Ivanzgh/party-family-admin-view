@@ -10,7 +10,6 @@
 
       <el-form-item>
         <el-button type="primary" @click="handlelogin">登录</el-button>
-        <el-button>注册</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -30,9 +29,12 @@
         handlelogin(){
           this.$axios.post('/login',this.formdata).then(res => {
             if (res.code == 200 ){
-              console.log(res)
               this.$store.commit('CHANGE_USERINFO',res.data)
+              this.$store.commit('SET_TOKEN',res.token)
               this.$router.push('/index')
+              this.$message.success(res.msg)
+            }else {
+              this.$message.error(res.msg)
             }
           })
         }

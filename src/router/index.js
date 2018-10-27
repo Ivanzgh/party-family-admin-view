@@ -6,14 +6,15 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path : '/login',
+      path : '/',
+      name : 'login',
       meta : {
         title : '登录页'
       },
       component: () => import('@/views/login')
     },
     {
-      path: '/',
+      path: '/layout',
       name: 'layout',
       component: () => import('@/views/layout/layout'),
       redirect : '/index',
@@ -53,6 +54,29 @@ export default new Router({
             title : '添加新闻'
           },
           component: () => import('@/views/news/addNews')
+        },
+        {
+          path : '/swiperList',
+          meta : {
+            title : '轮播图列表'
+          },
+          component: () => import('@/views/swiper/index')
+        },
+        {
+          path : '/addSwiper',
+          name : 'addSwiper',
+          meta : {
+            title : '添加轮播图'
+          },
+          component: () => import('@/views/swiper/addSwiper')
+        },
+        {
+          path : '/editSwiper',
+          name : 'editSwiper',
+          meta : {
+            title : '编辑轮播图'
+          },
+          component: () => import('@/views/swiper/addSwiper')
         },
       ]
     }

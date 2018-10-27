@@ -1,13 +1,13 @@
 <template>
   <div class="sideBar">
-    <el-row class="tac">
+    <el-row >
       <el-menu
         :router = 'true'
         default-active="2"
         class="el-menu-vertical-demo"
-        background-color="#545c64"
+        background-color="#333"
         text-color="#fff"
-        active-text-color="#ffd04b">
+        active-text-color="#409EFF">
 
         <el-menu-item index="/index">
           <template slot="title">
@@ -38,6 +38,17 @@
           </el-menu-item-group>
         </el-submenu>
 
+        <el-submenu index="4">
+          <template slot="title">
+            <i class="el-icon-setting"></i>
+            <span>轮播图管理</span>
+          </template>
+          <el-menu-item-group>
+            <el-menu-item index="/swiperList">轮播图列表</el-menu-item>
+            <el-menu-item index="/addSwiper">添加轮播图</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+
       </el-menu>
     </el-row>
   </div>
@@ -50,7 +61,7 @@
 </script>
 
 <style scoped>
-  .sideBar{
+  .el-menu-vertical-demo{
     height: 100vh;
   }
 </style>
