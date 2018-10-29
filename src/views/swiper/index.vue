@@ -94,7 +94,7 @@
       },
       pageChange(page){
         this.page = page;
-        this.getNewsData();
+        this.getSwiperData();
       }
     },
     created() {

@@ -16,30 +16,34 @@
 </template>
 
 <script>
-    export default {
-      data() {
-        return {
-          formdata : {
-            username : '',
-            password : ''
-          }
+  export default {
+    data() {
+      return {
+        formdata: {
+          username: '',
+          password: ''
         }
-      },
-      methods: {
-        handlelogin(){
-          this.$axios.post('/login',this.formdata).then(res => {
-            if (res.code == 200 ){
-              this.$store.commit('CHANGE_USERINFO',res.data)
-              this.$store.commit('SET_TOKEN',res.token)
+      }
+    },
+    methods: {
+      handlelogin() {
+        this.$axios.post('/login', this.formdata).then(res => {
+          if (res.code == 200) {
+            this.$store.commit('CHANGE_USERINFO', res.data)
+            this.$store.commit('SET_TOKEN', res.token)
+            if (this.$store.state.token) {
               this.$router.push('/index')
               this.$message.success(res.msg)
-            }else {
-              this.$message.error(res.msg)
+            } else {
+              this.$router.replace('/')
             }
-          })
-        }
-      },
-    }
+          } else {
+            this.$message.error(res.msg)
+          }
+        })
+      }
+    },
+  }
 </script>
 
 <style scoped>

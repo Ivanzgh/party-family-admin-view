@@ -6,19 +6,19 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     userInfo: {
-      username : '',
-      password : '',
-      avatar : '',
-      sex : '',
-      desc : ''
+      username: '',
+      password: '',
+      avatar: '',
+      sex: '',
+      desc: ''
     },
-    token : ''
+    token: ''
   },
   mutations: {
     'CHANGE_USERINFO'(state, payload) {
       state.userInfo = payload
     },
-    'SET_TOKEN'(state,token) {
+    'SET_TOKEN'(state, token) {
       state.token = token;
     },
     'DEL_TOKEN'(state) {
@@ -32,7 +32,7 @@ const store = new Vuex.Store({
   plugins: [
     createPersistedState({
       storage: {
-        getItem: key => sessionStorage.getgetItem(key),
+        getItem: key => sessionStorage.getItem(key),
         setItem: (key, value) => sessionStorage.setItem(key, value),
         removeItem: key => sessionStorage.removeItem(key),
       },
