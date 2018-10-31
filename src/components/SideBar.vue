@@ -5,7 +5,7 @@
         :router='true'
         default-active="2"
         class="el-menu-vertical-demo"
-        background-color="#333"
+        background-color="#263445"
         text-color="#fff"
         active-text-color="#409EFF">
         <el-menu-item index="/index">

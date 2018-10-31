@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="layout">
       <el-row>
         <el-col :span="4" style="height: 100vh;">
           <SideBar></SideBar>
@@ -24,5 +24,7 @@
 </script>
 
 <style scoped lang="scss">
-
+  .layout{
+    background: #F0F0F0;
+  }
 </style>

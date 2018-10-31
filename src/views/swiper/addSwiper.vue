@@ -22,7 +22,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="优先级：">
-          <el-input-number v-model="formData.priority" :min="1" :max="10">
+          <el-input-number v-model="formData.priority" :min="1">
           </el-input-number>
         </el-form-item>
         <el-form-item label="是否显示">

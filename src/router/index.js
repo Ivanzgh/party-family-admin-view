@@ -59,6 +59,13 @@ Vue.use(Router)
           component: () => import('@/views/news/addNews')
         },
         {
+          path : '/newsDetail',
+          meta : {
+            title : '新闻详情'
+          },
+          component: () => import('@/views/news/newsDetail')
+        },
+        {
           path : '/swiperList',
           meta : {
             title : '轮播图列表'

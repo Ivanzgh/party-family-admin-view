@@ -3,9 +3,7 @@
     <div class="title">
       党建E家后台管理系统
     </div>
-    <!--<div class="avatar">-->
-    <!--{{this.$store.state.userInfo.avatar}}-->
-    <!--</div>-->
+    <img :src="this.$store.state.userInfo.avatar" class="avatar" alt="">
     <el-dropdown class="user">
        <span class="el-dropdown-link">
         {{this.$store.state.userInfo.username}}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -55,12 +53,16 @@
     color: #666;
     border-bottom: 1px solid #999;
     margin-bottom: 10px;
+    position: relative;
     .title {
       display: flex;
       justify-content: center;
       align-items: center;
     }
     .avatar {
+      position: absolute;
+      top: 0;
+      right: 100px;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -68,11 +70,11 @@
     .user {
       position: absolute;
       top: 2px;
-      right: 40px;
+      right: 20px;
     }
     .el-dropdown-link {
       cursor: pointer;
-      color: #409EFF;
+      color: #333;
       font-size: 18px;
     }
   }

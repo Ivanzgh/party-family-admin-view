@@ -2,14 +2,13 @@
   <div class="login">
     <el-form ref="formdata" v-model="formdata" label-width="80px">
       <el-form-item label="姓名">
-        <el-input v-model="formdata.username"></el-input>
+        <el-input v-model="formdata.username" placeholder="姓名"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-        <el-input v-model="formdata.password" type="password"></el-input>
+        <el-input v-model="formdata.password" type="password" placeholder="密码"></el-input>
       </el-form-item>
-
       <el-form-item>
-        <el-button type="primary" @click="handlelogin">登录</el-button>
+        <el-button type="primary"  @click="handlelogin" class="btn">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -28,7 +27,7 @@
     methods: {
       handlelogin() {
         this.$axios.post('/login', this.formdata).then(res => {
-          if (res.code == 200) {
+          if (res.code === 200) {
             this.$store.commit('CHANGE_USERINFO', res.data)
             this.$store.commit('SET_TOKEN', res.token)
             if (this.$store.state.token) {
@@ -46,10 +45,14 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .login {
     width: 400px;
     height: 300px;
-    margin: 60px auto;
+    margin: 200px auto;
+
+    .btn{
+      width: 320px;
+    }
   }
 </style>

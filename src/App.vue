@@ -12,7 +12,14 @@ export default {
 
 <style>
   body{
-    background: #ddd;
+    background: url('./assets/bg_img.jpg') no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  *{
+    margin: 0;
+    padding: 0;
   }
   /*定义全局el-card的高度*/
   #app .el-card{
