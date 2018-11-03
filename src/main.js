@@ -9,12 +9,17 @@ import $axios from './units/axios'
 // import VueQuillEditor from 'vue-quill-editor'  //富文本编辑器
 import store from './vuex/store'
 
+import ECharts from 'vue-echarts/components/ECharts'
+// import ECharts modules manually to reduce bundle size
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
 
 // Vue.use(VueQuillEditor, /* { default global options } */)
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.prototype.$axios = $axios
+Vue.component('v-chart', ECharts)
 
 /* eslint-disable no-new */
 new Vue({
